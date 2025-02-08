@@ -138,14 +138,14 @@ export default function SiteHeader() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-lg font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-base font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 font-rethink">
                     Home
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-lg font-semibold text-[#7c7c7c] hover:text-blue-500">
+                <NavigationMenuTrigger className="text-base font-semibold text-[#7c7c7c] hover:text-blue-500">
                   Features
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -205,7 +205,7 @@ export default function SiteHeader() {
 
               <NavigationMenuItem>
                 <Link href="/#pricing" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-lg font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-base font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                     Pricing
                   </NavigationMenuLink>
                 </Link>
@@ -213,7 +213,7 @@ export default function SiteHeader() {
 
               <NavigationMenuItem>
                 <Link href="/academy" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-lg font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-base font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                     Academy
                   </NavigationMenuLink>
                 </Link>
@@ -226,11 +226,11 @@ export default function SiteHeader() {
           <Button
             variant="ghost"
             size="lg"
-            className="text-base font-semibold text-[#7c7c7c]"
+            className="text-base font-semibold text-[#7c7c7c] tracking-tight"
           >
             Log in
           </Button>
-          <Button size="lg" className="text-base font-semibold">
+          <Button size="lg" className="text-base font-semibold tracking-tight">
             Sign up
           </Button>
         </div>
@@ -238,7 +238,7 @@ export default function SiteHeader() {
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
+              <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-full p-0">
