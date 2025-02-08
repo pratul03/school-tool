@@ -20,23 +20,26 @@ export function HeroSection() {
               {" "}
               School-Tool{" "}
             </Link>{" "}
-            with seamless experience & features that will help to move your
-            Academy forward in This Digital Era.
+            From admissions to academics, simplify every aspect of school
+            administration with our comprehensive and user-friendly platform.
           </p>
           <div className="mt-10 flex flex-col md:flex-row gap-4 items-center justify-center gap-x-6">
             <Link href="/features">
-              <Button size="xl" className="tracking-[1px] text-lg font-medium">
-                Features
+              <Button
+                size="lg"
+                className=" text-lg font-medium bg-blue-500 rounded-xl hover:bg-blue-700"
+              >
+                All Features
                 <ArrowRightIcon />
               </Button>
             </Link>
             <Link href="/contact-us">
               <Button
-                size="xl"
+                size="lg"
                 variant="outline"
-                className="text-lg font-medium"
+                className="text-lg font-medium rounded-xl"
               >
-                Contact Us
+                Learn More
                 <ArrowRightIcon />
               </Button>
             </Link>

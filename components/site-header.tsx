@@ -138,14 +138,14 @@ export default function SiteHeader() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-base font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 font-rethink">
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 font-rethink">
                     Home
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-base font-semibold text-[#7c7c7c] hover:text-blue-500">
+                <NavigationMenuTrigger className="text-base bg-transparent font-semibold text-[#7c7c7c] hover:text-blue-500">
                   Features
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -205,7 +205,7 @@ export default function SiteHeader() {
 
               <NavigationMenuItem>
                 <Link href="/#pricing" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-base font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                     Pricing
                   </NavigationMenuLink>
                 </Link>
@@ -213,7 +213,7 @@ export default function SiteHeader() {
 
               <NavigationMenuItem>
                 <Link href="/academy" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-base font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-semibold text-[#7c7c7c] transition-colors hover:bg-accent hover:text-blue-500 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                     Academy
                   </NavigationMenuLink>
                 </Link>
