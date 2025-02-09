@@ -2,8 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+html,body {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+  width: 8px !important;
+  height: 4px !important;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+  border-radius: 10px !important;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #bebebe !important;
+  border-radius: 10px !important;
+}
+
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #718096 !important;
 }
 
 @layer base {

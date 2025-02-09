@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -32,6 +32,7 @@ import {
   CalendarDays,
   FileText,
   Shield,
+  EllipsisVertical,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
@@ -125,8 +126,8 @@ const features = [
 ];
 
 export default function SiteHeader() {
-  const [open, setOpen] = React.useState(false);
-  const [showFeatures, setShowFeatures] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [showFeatures, setShowFeatures] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -237,17 +238,30 @@ export default function SiteHeader() {
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-6 w-6" />
+            <Button variant="ghost">
+              <EllipsisVertical className="h-6 w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-full p-0">
+          <SheetContent
+            side="left"
+            className="w-full p-0 flex flex-col max-h-[100vh]"
+          >
+            {/* Fixed Header */}
             <SheetHeader className="border-b p-4">
               <SheetTitle className="text-left font-bold tracking-tight text-xl text-black/70">
                 Navigation
               </SheetTitle>
             </SheetHeader>
-            <div className="flex flex-col py-4">
+
+            {/* Scrollable Content */}
+            <div
+              className="flex flex-1 flex-col overflow-y-auto py-4 [&::-webkit-scrollbar]:w-2
+  [&::-webkit-scrollbar-track]:bg-purple-100
+  [&::-webkit-scrollbar-thumb]:bg-indigo-300
+  [&::-webkit-scrollbar-thumb]:rounded-md
+  dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
+            >
               <Link
                 href="/"
                 className="px-4 py-2 text-lg font-medium hover:bg-accent text-[#7c7c7c] hover:text-blue-500"
@@ -268,7 +282,7 @@ export default function SiteHeader() {
                 />
               </button>
               {showFeatures && (
-                <div className="px-4 py-2 space-y-4">
+                <div className="px-4 py-2 space-y-2">
                   {features.map((feature, index) => (
                     <Link
                       key={index}
@@ -306,7 +320,9 @@ export default function SiteHeader() {
                 Academy
               </Link>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-background">
+
+            {/* Fixed Footer */}
+            <div className="border-t bg-background p-4">
               <div className="grid gap-4">
                 <Button
                   variant="outline"
@@ -317,7 +333,7 @@ export default function SiteHeader() {
                   Log in
                 </Button>
                 <Button
-                  className="w-full text-lg font-semibold tracking-tight "
+                  className="w-full text-lg font-semibold tracking-tight"
                   onClick={() => setOpen(false)}
                 >
                   Sign up
