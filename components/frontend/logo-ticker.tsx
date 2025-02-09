@@ -16,10 +16,10 @@ export const LogoTicker = () => {
         animation="blurInUp"
         by="character"
         className="mt-5
-             text-md md:text-2xl font-semibold text-center mb-16 text-muted-foreground"
+             text-md md:text-2xl font-semibold text-center mb-16 text-neutral-600"
         duration={5}
       >
-        Trusted By the world's most innovative teams
+        Trusted By Leading Educational Institutions WorldWide
       </TextAnimate>
       <div className="container">
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black,transparent)]">
