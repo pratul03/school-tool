@@ -245,6 +245,7 @@ export default function SiteHeader() {
           <SheetContent
             side="left"
             className="w-full p-0 flex flex-col max-h-[100vh]"
+            
           >
             {/* Fixed Header */}
             <SheetHeader className="border-b p-4">
@@ -257,7 +258,7 @@ export default function SiteHeader() {
             <div
               className="flex flex-1 flex-col overflow-y-auto py-4 [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:bg-purple-100
-  [&::-webkit-scrollbar-thumb]:bg-indigo-300
+  [&::-webkit-scrollbar-thumb]:bg-indigo-200
   [&::-webkit-scrollbar-thumb]:rounded-md
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
