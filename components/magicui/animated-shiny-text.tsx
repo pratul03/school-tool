@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-function */
+
 import { ComponentPropsWithoutRef, CSSProperties, FC } from "react";
 
 import { cn } from "@/lib/utils";
@@ -29,7 +32,7 @@ export const AnimatedShinyText: FC<AnimatedShinyTextProps> = ({
         // Shine gradient
         "bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent  dark:via-white/80",
 
-        className,
+        className
       )}
       {...props}
     >

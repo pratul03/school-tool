@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-function */
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -374,7 +376,7 @@ export function TextAnimate({
             custom={i * staggerTimings[by]}
             className={cn(
               by === "line" ? "block" : "inline-block whitespace-pre",
-              segmentClassName,
+              segmentClassName
             )}
           >
             {segment}
