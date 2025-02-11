@@ -6,12 +6,17 @@ import Logo from "../Logo";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gradient-to-r from-purple-700 to-indigo-700 text-white dark:from-purple-950 dark:to-indigo-950">
+    <footer className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-neutral-100 dark:text-dark dark:from-purple-900 dark:to-indigo-900">
       <div className="container px-4 py-16 md:px-6">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <Logo />
+              <Logo
+                iconColor="text-black/80"
+                iconBgColor="bg-neutral-100/40"
+                coloredTextColor="text-white"
+                iconSize={32}
+              />
             </div>
             <p className="text-sm text-white/90">
               Trusted in more than 100 countries & 5 million customers. Have any
