@@ -69,7 +69,7 @@ export default function PricingTable() {
               ].map((feature, index) => (
                 <li key={index} className="flex gap-x-3">
                   <svg
-                    className="h-6 w-5 flex-none text-indigo-600"
+                    className="h-6 w-8 flex-none text-green-600"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                     aria-hidden="true"
