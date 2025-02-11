@@ -25,7 +25,6 @@ import {
   DollarSign,
   ClipboardList,
   Bell,
-  Menu,
   MessageSquare,
   Users,
   GraduationCap,
