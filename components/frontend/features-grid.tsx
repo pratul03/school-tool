@@ -83,14 +83,14 @@ export default function SolidBento() {
   if (!mounted) return null;
 
   return (
-    <div className="flex h-[600px] items-center justify-center bg-gradient-to-br  from-indigo-100 to-purple-100 dark:from-purple-950 dark:to-indigo-950 flex-col">
-      <ShinyHeader text="Introducing SchoolTool" />
-      <div className="max-w-6xl mx-auto mb-10 -mt-10">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+    <div className="flex max-h-[120vh] h-auto items-center justify-center bg-gradient-to-br  from-indigo-100 to-purple-100 dark:from-purple-950 dark:to-indigo-950 flex-col mb-[100px] md:mb-0">
+      <div className="max-w-6xl mx-auto mb-16">
+        <ShinyHeader text="Introducing SchoolTool" />
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-10">
           Manage your Educational Institute
         </h1>
       </div>
-      <div className="grid max-h-screen h-auto p-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 max-w-[1200px] ">
+      <div className="grid max-h-[100vh] h-auto py-4 md:py-1 px-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 max-w-[1200px] -mt-16 mb-16">
         {blogs.map((blog, index) => (
           <Link
             key={blog.id}

@@ -37,6 +37,7 @@ import {
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import Logo from "./Logo";
+import { ModeToggle } from "./frontend/mode-toggle";
 
 const features = [
   {
@@ -234,6 +235,7 @@ export default function SiteHeader() {
           <Button size="lg" className="text-base font-semibold tracking-tight">
             Sign up
           </Button>
+          <ModeToggle />
         </div>
 
         <Sheet open={open} onOpenChange={setOpen}>
@@ -245,7 +247,6 @@ export default function SiteHeader() {
           <SheetContent
             side="left"
             className="w-full p-0 flex flex-col max-h-[100vh]"
-            
           >
             {/* Fixed Header */}
             <SheetHeader className="border-b p-4">
