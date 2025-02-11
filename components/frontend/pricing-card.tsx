@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import SmallTitle from "./small-title";
+import { InteractiveHoverButton } from "../magicui/interactive-hover-button";
 
 export default function PricingTable() {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -121,13 +122,9 @@ export default function PricingTable() {
                     </span>
                   )}
                 </p>
-
-                <a
-                  href="#"
-                  className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
+                <InteractiveHoverButton className="mt-[110px]">
                   Get Started
-                </a>
+                </InteractiveHoverButton>
                 <p className="mt-6 text-xs leading-5 text-gray-600">
                   Invoices available for institutions & easy school-wide
                   implementation.
