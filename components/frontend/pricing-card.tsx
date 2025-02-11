@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import SmallTitle from "./small-title";
 import { InteractiveHoverButton } from "../magicui/interactive-hover-button";
-import { ShinyButton } from "../magicui/shiny-button";
 
 export default function PricingTable() {
   const [isAnnual, setIsAnnual] = useState(false);
