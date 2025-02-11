@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import SmallTitle from "./small-title";
 import { InteractiveHoverButton } from "../magicui/interactive-hover-button";
+import { ShinyButton } from "../magicui/shiny-button";
 
 export default function PricingTable() {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -51,9 +52,7 @@ export default function PricingTable() {
             </p>
 
             <div className="mt-10 flex items-center gap-x-4">
-              <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
-                Features Included
-              </h4>
+              <SmallTitle title="Features included ✨" />
               <div className="h-px flex-auto bg-gray-100"></div>
             </div>
 
@@ -94,7 +93,7 @@ export default function PricingTable() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
-              className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16"
+              className="rounded-2xl bg-gray-100 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16"
             >
               <div className="mx-auto max-w-xs px-8">
                 <p className="text-base font-semibold text-gray-600">
