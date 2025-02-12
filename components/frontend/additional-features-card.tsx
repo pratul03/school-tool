@@ -134,8 +134,8 @@ export default function AdditionalFeatures() {
                     {card.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8">
-                  <div className="w-full sm:max-w-lg bg-white/60 py-6 px-4 sm:py-8 sm:px-12 rounded-lg shadow-md">
+                <CardContent className="flex flex-col sm:flex-row justify-between items-stretch gap-6 sm:gap-8">
+                  <div className="flex-1 bg-white/60 py-6 px-4 sm:py-8 sm:px-12 rounded-lg shadow-md min-h-[350px] sm:min-h-[400px]">
                     <ul className="list-inside space-y-3 sm:space-y-4">
                       {card.detail.map((item, index) => (
                         <li
@@ -150,13 +150,13 @@ export default function AdditionalFeatures() {
                       ))}
                     </ul>
                   </div>
-                  <div className="w-full sm:w-auto flex justify-center">
+                  <div className="flex-1 flex justify-center items-center min-h-[350px] sm:min-h-[400px]">
                     <Image
                       src={card.image || "/placeholder.svg"}
                       alt={`${card.title} illustration`}
-                      width={200}
-                      height={200}
-                      className="rounded-lg"
+                      width={400}
+                      height={400}
+                      className="rounded-lg object-cover w-full h-full max-h-[400px]"
                       priority
                     />
                   </div>

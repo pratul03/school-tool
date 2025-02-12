@@ -4,7 +4,7 @@ import FeaturesGrid from "@/components/frontend/features-grid";
 import { HeroSection } from "@/components/frontend/hero-section";
 import { LogoTicker } from "@/components/frontend/logo-ticker";
 import PricingSection from "@/components/frontend/pricing-card";
-
+import { MarqueeReviews } from "@/components/frontend/review-page";
 
 export default function Home() {
   return (
@@ -14,6 +14,7 @@ export default function Home() {
       <DashBoardPreview />
       <FeaturesGrid />
       <AdditionalFeatures />
+      <MarqueeReviews />
       <PricingSection />
     </main>
   );
