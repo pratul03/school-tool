@@ -23,7 +23,7 @@ export default function Logo({
   return (
     <div className="ml-2">
       <Link href="/" className="flex items-center space-x-2">
-        <div className={cn("rounded-sm px-2 py-1", iconBgColor)}>
+        <div className={cn("rounded-full px-2 py-2", iconBgColor)}>
           <span className={iconColor}>
             <School2Icon size={iconSize} />
           </span>
