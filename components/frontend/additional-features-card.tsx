@@ -1,32 +1,29 @@
 "use client";
 
-import { useState } from "react";
-import Image, { StaticImageData } from "next/image";
+import type React from "react";
+import Image, { type StaticImageData } from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
+
 import {
+  type LucideIcon,
   Book,
   BarChartIcon as ChartBar,
   GraduationCap,
   Wallet,
 } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SmallTitle from "./small-title";
 import img1 from "@/app/assets/16-courses-in-school-administration-and-management.png";
 import img2 from "@/app/assets/school-image-1.png";
 import img3 from "@/app/assets/managment-software.png";
 import img4 from "@/app/assets/school-management-software.png";
+import SmallTitle from "./small-title";
 
 interface FeatureCard {
   id: string;
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon: LucideIcon;
   image: string | StaticImageData;
   detail: string[];
 }
@@ -34,10 +31,10 @@ interface FeatureCard {
 const featureCards: FeatureCard[] = [
   {
     id: "student",
-    title: "Student Management",
+    title: "Student",
     description:
       "Efficiently manage student records, attendance, and performance tracking.",
-    icon: <GraduationCap className="h-6 w-6" />,
+    icon: GraduationCap,
     image: img1,
     detail: [
       "Student enrollment and profile management",
@@ -49,10 +46,10 @@ const featureCards: FeatureCard[] = [
   },
   {
     id: "academics",
-    title: "Academic Planning",
+    title: "Academic",
     description:
       "Plan and organize curriculum, schedules, and course materials with ease.",
-    icon: <Book className="h-6 w-6" />,
+    icon: Book,
     image: img2,
     detail: [
       "Course and syllabus management",
@@ -64,10 +61,10 @@ const featureCards: FeatureCard[] = [
   },
   {
     id: "finance",
-    title: "Financial Management",
+    title: "Financial",
     description:
       "Streamline fee collection, budgeting, and financial reporting processes.",
-    icon: <Wallet className="h-6 w-6" />,
+    icon: Wallet,
     image: img3,
     detail: [
       "Student fee collection and tracking",
@@ -79,10 +76,10 @@ const featureCards: FeatureCard[] = [
   },
   {
     id: "analytics",
-    title: "Analytics and Reporting",
+    title: "Analytics",
     description:
       "Gain insights with comprehensive analytics and customizable reports.",
-    icon: <ChartBar className="h-6 w-6" />,
+    icon: ChartBar,
     image: img4,
     detail: [
       "Student performance analytics",
@@ -94,13 +91,32 @@ const featureCards: FeatureCard[] = [
   },
 ];
 
-export default function AdditionalFeatures() {
-  const [activeTab, setActiveTab] = useState(featureCards[0].id);
-
+const AnimatedList: React.FC<{ items: string[] }> = ({ items }) => {
   return (
-    <section className="py-12 px-4 bg-gray-50 sm:py-16">
-      <div className="max-w-6xl mx-auto text-center">
-        <SmallTitle title="Additional Features ✨" />
+    <ol className="space-y-6">
+      {items.map((item, index) => (
+        <motion.li
+          key={index}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3, delay: index * 0.1 }}
+          className="flex items-center space-x-6"
+        >
+          <span className="flex items-center justify-center  w-8 h-8 bg-blue-100/60 text-blue-500 font-medium rounded-lg">
+            {index + 1}
+          </span>
+          <span>{item}</span>
+        </motion.li>
+      ))}
+    </ol>
+  );
+};
+
+export default function AdditionalFeatures() {
+  return (
+    <div className="w-full max-w-full max-h-[100vh] mt-[100px] mb-[400px] md:mb-[200px]">
+      <div className="max-w-full mx-auto text-center">
+        <SmallTitle title=" Features ✨" />
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
           Additional Features
         </h2>
@@ -108,64 +124,56 @@ export default function AdditionalFeatures() {
           Discover the powerful features of our School Management System
           designed to streamline operations and enhance educational experiences.
         </p>
-
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-16 md:mb-6">
-            {featureCards.map((card) => (
-              <TabsTrigger
-                key={card.id}
-                value={card.id}
-                className="flex items-center justify-center gap-2 p-3 sm:p-4 bg-white rounded-lg shadow-sm hover:bg-gray-100 transition-colors text-sm sm:text-base"
-              >
-                {card.icon}
-                <span className="hidden sm:inline">{card.title}</span>
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {featureCards.map((card) => (
-            <TabsContent key={card.id} value={card.id}>
-              <Card className="w-full mx-auto h-auto">
-                <CardHeader>
-                  <CardTitle className="text-xl sm:text-2xl md:text-3xl text-left">
-                    {card.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm sm:text-base md:text-lg font-medium text-left">
-                    {card.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex flex-col sm:flex-row justify-between items-stretch gap-6 sm:gap-8">
-                  <div className="flex-1 bg-white/60 py-6 px-4 sm:py-8 sm:px-12 rounded-lg shadow-md min-h-[350px] sm:min-h-[400px]">
-                    <ul className="list-inside space-y-3 sm:space-y-4">
-                      {card.detail.map((item, index) => (
-                        <li
-                          key={index}
-                          className="text-gray-700 text-sm sm:text-base leading-relaxed flex gap-3 sm:gap-4"
-                        >
-                          <span className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-blue-100/60 text-blue-500 font-medium rounded-lg">
-                            {index + 1}
-                          </span>
-                          <span className="text-black">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="flex-1 flex justify-center items-center min-h-[350px] sm:min-h-[400px]">
-                    <Image
-                      src={card.image || "/placeholder.svg"}
-                      alt={`${card.title} illustration`}
-                      width={400}
-                      height={400}
-                      className="rounded-lg object-cover w-full h-full max-h-[400px]"
-                      priority
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          ))}
-        </Tabs>
       </div>
-    </section>
+      <Card className="w-full max-w-6xl mx-auto h-[80vh]">
+        <CardContent className="p-6">
+          <Tabs defaultValue={featureCards[0].id} className="w-full">
+            <TabsList className="grid w-full  grid-cols-4  h-auto">
+              {featureCards.map((card) => (
+                <TabsTrigger
+                  key={card.id}
+                  value={card.id}
+                  className="flex flex-col items-center justify-center p-2 space-y-2"
+                >
+                  <card.icon className="h-6 w-6" />
+                  <span className="text-sm font-medium">{card.title}</span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            <div className="mt-6">
+              <AnimatePresence mode="wait">
+                {featureCards.map((card) => (
+                  <TabsContent key={card.id} value={card.id}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    >
+                      <div className="space-y-4">
+                        <h3 className="text-2xl font-bold">{card.title}</h3>
+                        <p className="text-muted-foreground">
+                          {card.description}
+                        </p>
+                        <AnimatedList items={card.detail} />
+                      </div>
+                      <div className="relative h-[300px] md:h-[400px]">
+                        <Image
+                          src={card.image || "/placeholder.svg"}
+                          alt={card.title}
+                          fill
+                          className="object-cover rounded-lg"
+                        />
+                      </div>
+                    </motion.div>
+                  </TabsContent>
+                ))}
+              </AnimatePresence>
+            </div>
+          </Tabs>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

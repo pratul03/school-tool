@@ -224,16 +224,23 @@ export default function SiteHeader() {
         </div>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="lg"
-            className="text-base font-semibold text-[#7c7c7c] tracking-tight"
-          >
-            Log in
-          </Button>
-          <Button size="lg" className="text-base font-semibold tracking-tight">
-            Sign up
-          </Button>
+          <Link href="/login">
+            <Button
+              variant="ghost"
+              size="lg"
+              className="text-base font-semibold text-[#7c7c7c] tracking-tight"
+            >
+              Log in
+            </Button>
+          </Link>
+          <Link href="/register">
+            <Button
+              size="lg"
+              className="text-base font-semibold tracking-tight"
+            >
+              Sign up
+            </Button>
+          </Link>
           <ModeToggle />
         </div>
 
