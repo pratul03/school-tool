@@ -233,12 +233,12 @@ export default function SiteHeader() {
               Log in
             </Button>
           </Link>
-          <Link href="/register">
+          <Link href="/contact-us">
             <Button
-              size="lg"
+              size="default"
               className="text-base font-semibold tracking-tight"
             >
-              Sign up
+              Book Demo
             </Button>
           </Link>
           <ModeToggle />
