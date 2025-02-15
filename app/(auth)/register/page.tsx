@@ -68,16 +68,15 @@ const SignupPage = () => {
 
   return (
     <div className="container flex flex-col bg-gray-50">
-      <div className="mt-2">
-        <Logo />
-      </div>
       <div className="flex h-screen">
         {/* Carousel and Logo Section */}
-        <div className="w-1/2 mt-[70px] ml-[150px] items-center justify-center ">
+        <div className="w-1/2 ml-[150px] items-center justify-center ">
           {/* Logo Section */}
-
+          <div className="mt-5 mb-5">
+            <Logo />
+          </div>
           {/* Carousel Section */}
-          <div className="h-[90%] w-full relative overflow-hidden rounded-lg">
+          <div className="h-[80%] w-[90%] relative overflow-hidden rounded-lg">
             <motion.div
               className="flex h-full"
               animate={{ x: `-${currentSlide * 100}%` }}
