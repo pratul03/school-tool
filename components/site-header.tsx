@@ -133,7 +133,7 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center justify-between max-w-6xl mx-auto">
         <div className="flex items-center space-x-4">
-          <Logo />
+          <Logo className="font-semibold" size="lg" />
 
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
@@ -335,10 +335,9 @@ export default function SiteHeader() {
                 <Button
                   variant="outline"
                   className="w-full text-lg font-semibold tracking-tight text-black/80"
-                  onClick={() => setOpen(false)}
                   size="lg"
                 >
-                  Log in
+                  <Link href="/login">Login</Link>
                 </Button>
                 <Button
                   className="w-full text-lg font-semibold tracking-tight"

@@ -12,10 +12,10 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Logo
-                iconColor="text-black/80"
-                iconBgColor="bg-neutral-100/40"
+                className="font-semibold"
+                size="lg"
+                variant="secondary"
                 coloredTextColor="text-white"
-                iconSize={32}
               />
             </div>
             <p className="text-sm text-white/90">
@@ -129,7 +129,8 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container flex flex-col items-center justify-center gap-4 py-6 text-center text-sm md:h-16 md:flex-row md:py-0">
           <div className="text-white/60">
-            Copyright &copy;2025 All Right Reserved School-Tool.
+            Copyright &copy;{new Date().getFullYear()} All Right Reserved
+            School-Tool.
           </div>
         </div>
       </div>
