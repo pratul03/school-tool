@@ -37,6 +37,7 @@ import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import Logo from "./Logo";
 import { ModeToggle } from "./frontend/mode-toggle";
+import { useRouter } from "next/navigation";
 
 const features = [
   {
@@ -128,6 +129,17 @@ const features = [
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [showFeatures, setShowFeatures] = useState(false);
+  const router = useRouter();
+
+  const handleLoginClick = () => {
+    setOpen(false); // Close the modal or whatever `open` represents
+    router.push("/login"); // Redirect to the login page
+  };
+
+  const handleSignUpClick = () => {
+    setOpen(false); // Close the modal or whatever `open` represents
+    router.push("/contact-us"); // Redirect to the signup page
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -336,14 +348,15 @@ export default function SiteHeader() {
                   variant="outline"
                   className="w-full text-lg font-semibold tracking-tight text-black/80"
                   size="lg"
+                  onClick={handleLoginClick}
                 >
-                  <Link href="/login">Login</Link>
+                  Login
                 </Button>
                 <Button
                   className="w-full text-lg font-semibold tracking-tight"
-                  onClick={() => setOpen(false)}
+                  onClick={handleSignUpClick}
                 >
-                  Sign up
+                  Contact Us
                 </Button>
               </div>
             </div>
