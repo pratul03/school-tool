@@ -33,7 +33,7 @@ export default function LoginPageComponent() {
       <div className="flex items-center justify-center py-12">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="absolute mt-10 md:mt-0 left-1/4 top-5 md:left-5">
-            <Logo className="font-semibold" size="xl" />
+            <Logo className="font-bold" size="xl" />
           </div>
           <div className="grid gap-2 text-center">
             <h1 className="text-3xl font-bold mt-[100px] md:mt-0 text-muted-foreground">
