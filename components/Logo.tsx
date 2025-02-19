@@ -1,8 +1,8 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { MdSchool } from "react-icons/md";
 import Link from "next/link";
 import React from "react";
+import { Snowflake } from "lucide-react";
 
 // Define the variants for the logo
 const logoVariants = cva("flex items-center space-x-2", {
@@ -101,7 +101,7 @@ export default function Logo({
       <Link href="/" className={cn(logoVariants({ variant, size }))}>
         <div className={cn(iconContainerVariants({ variant }))}>
           <span className={cn(iconVariants({ variant }))}>
-            <MdSchool size={iconSize} />
+            <Snowflake size={iconSize} strokeWidth={1.5} />
           </span>
         </div>
         <span className={cn(textVariants({ variant, size }))}>

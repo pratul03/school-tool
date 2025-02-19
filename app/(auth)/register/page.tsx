@@ -73,7 +73,7 @@ const SignupPage = () => {
         <div className="w-1/2 ml-[150px] items-center justify-center ">
           {/* Logo Section */}
           <div className="mt-5 mb-5">
-            <Logo />
+            <Logo className="mx-auto"/>
           </div>
           {/* Carousel Section */}
           <div className="h-[80%] w-[90%] relative overflow-hidden rounded-lg">
