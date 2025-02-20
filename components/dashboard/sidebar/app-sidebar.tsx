@@ -1,8 +1,11 @@
-import React from "react";
+"use client";
+
 import {
+  Archive,
   ArrowRight,
   AudioWaveform,
   BadgeCheck,
+  BarChart,
   Bell,
   BookOpen,
   Bot,
@@ -19,15 +22,20 @@ import {
   LayoutDashboard,
   LogOut,
   Map,
+  MessageSquare,
   MoreHorizontal,
   Package,
   PieChart,
   Plus,
+  Settings,
   Settings2,
   ShoppingCart,
   Sparkles,
   SquareTerminal,
   Trash2,
+  Truck,
+  UserCheck,
+  Users,
 } from "lucide-react";
 import {
   Sidebar,
@@ -65,6 +73,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/components/Logo";
+import { usePathname } from "next/navigation";
 
 export default function AppSidebar() {
   const user = {
@@ -73,93 +82,116 @@ export default function AppSidebar() {
     avatar: "/avatars/shadcn.jpg",
   };
 
-  const navMain = [
+  const sidebarLinks = [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboard,
+      items: [{ title: "Overview", url: "/dashboard/overview" }],
+    },
+    {
+      title: "Student Management",
+      url: "/students",
+      icon: Users,
       items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
+        { title: "Student Directory", url: "/students/directory" },
+        { title: "Enrollment", url: "/students/enrollment" },
+        { title: "Attendance", url: "/students/attendance" },
+        { title: "Performance", url: "/students/performance" },
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
+      title: "Academics",
+      url: "/academics",
       icon: BookOpen,
       items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
+        { title: "Curriculum", url: "/academics/curriculum" },
+        { title: "Timetable", url: "/academics/timetable" },
+        { title: "Examinations", url: "/academics/examinations" },
+        { title: "Assignments", url: "/academics/assignments" },
+        { title: "Report Cards", url: "/academics/report-cards" },
+      ],
+    },
+    {
+      title: "Staff Management",
+      url: "/staff",
+      icon: UserCheck,
+      items: [
+        { title: "Staff Directory", url: "/staff/directory" },
+        { title: "Attendance", url: "/staff/attendance" },
+        { title: "Leave Management", url: "/staff/leave" },
+        { title: "Performance", url: "/staff/performance" },
+      ],
+    },
+    {
+      title: "Communication",
+      url: "/communication",
+      icon: MessageSquare,
+      items: [
+        { title: "Messages", url: "/communication/messages" },
+        { title: "Announcements", url: "/communication/announcements" },
+        { title: "Notice Board", url: "/communication/notice-board" },
+        { title: "Emergency Alerts", url: "/communication/emergency" },
+      ],
+    },
+    {
+      title: "Finance",
+      url: "/finance",
+      icon: CreditCard,
+      items: [
+        { title: "Fee Management", url: "/finance/fees" },
+        { title: "Payments", url: "/finance/payments" },
+        { title: "Scholarships", url: "/finance/scholarships" },
+        { title: "Reports", url: "/finance/reports" },
+      ],
+    },
+    {
+      title: "Transport",
+      url: "/transport",
+      icon: Truck,
+      items: [
+        { title: "Routes", url: "/transport/routes" },
+        { title: "Tracking", url: "/transport/tracking" },
+        { title: "Drivers", url: "/transport/drivers" },
+        { title: "Maintenance", url: "/transport/maintenance" },
+      ],
+    },
+    {
+      title: "Resources",
+      url: "/resources",
+      icon: Archive,
+      items: [
+        { title: "Library", url: "/resources/library" },
+        { title: "Inventory", url: "/resources/inventory" },
+        { title: "Facilities", url: "/resources/facilities" },
+        { title: "Assets", url: "/resources/assets" },
+      ],
+    },
+    {
+      title: "Reports & Analytics",
+      url: "/reports",
+      icon: BarChart,
+      items: [
+        { title: "Academic Reports", url: "/reports/academic" },
+        { title: "Financial Reports", url: "/reports/financial" },
+        { title: "Custom Reports", url: "/reports/custom" },
+        { title: "Analytics Dashboard", url: "/reports/analytics" },
       ],
     },
     {
       title: "Settings",
-      url: "#",
-      icon: Settings2,
+      url: "/settings",
+      icon: Settings,
       items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
+        { title: "School Profile", url: "/settings/profile" },
+        { title: "User Management", url: "/settings/users" },
+        { title: "System Settings", url: "/settings/system" },
+        { title: "Backup & Security", url: "/settings/security" },
       ],
     },
   ];
+
+  const pathname = usePathname();
 
   return (
     <section>
@@ -238,16 +270,19 @@ export default function AppSidebar() {
         <SidebarContent>
           <SidebarGroup>
             <SidebarMenu>
-              {navMain.map((item) => (
+              {sidebarLinks.map((item) => (
                 <Collapsible
                   key={item.title}
                   asChild
-                  defaultOpen={item.isActive}
+                  defaultOpen={pathname.startsWith(item.url)}
                   className="group/collapsible"
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
-                      <SidebarMenuButton tooltip={item.title}>
+                      <SidebarMenuButton
+                        tooltip={item.title}
+                        onClick={}
+                      >
                         {item.icon && <item.icon />}
                         <span>{item.title}</span>
                         <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
