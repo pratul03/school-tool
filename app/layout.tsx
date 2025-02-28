@@ -6,10 +6,7 @@ import { ourFileRouter } from "@/app/api/uploadthing/core";
 
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "School Tool",

@@ -1,40 +1,22 @@
 "use client";
 
 import {
-  Archive,
-  ArrowRight,
-  AudioWaveform,
   BadgeCheck,
   BarChart,
   Bell,
   BookOpen,
-  Bot,
+  BusIcon,
   ChevronRight,
   ChevronsUpDown,
-  Command,
-  CommandIcon,
   CreditCard,
-  DollarSign,
-  Folder,
-  Forward,
-  Frame,
-  GalleryVerticalEnd,
+  HardDriveDownload,
   LayoutDashboard,
   LogOut,
-  Map,
   MessageSquare,
-  MoreHorizontal,
-  Package,
-  PieChart,
-  Plus,
+  ReceiptIndianRupee,
   Settings,
-  Settings2,
-  ShoppingCart,
   Sparkles,
-  SquareTerminal,
-  Trash2,
-  Truck,
-  UserCheck,
+  UserCog,
   Users,
 } from "lucide-react";
 import {
@@ -74,6 +56,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function AppSidebar() {
   const user = {
@@ -115,7 +98,7 @@ export default function AppSidebar() {
     {
       title: "Staff Management",
       url: "/staff",
-      icon: UserCheck,
+      icon: UserCog,
       items: [
         { title: "Staff Directory", url: "/staff/directory" },
         { title: "Attendance", url: "/staff/attendance" },
@@ -137,7 +120,7 @@ export default function AppSidebar() {
     {
       title: "Finance",
       url: "/finance",
-      icon: CreditCard,
+      icon: ReceiptIndianRupee,
       items: [
         { title: "Fee Management", url: "/finance/fees" },
         { title: "Payments", url: "/finance/payments" },
@@ -148,7 +131,7 @@ export default function AppSidebar() {
     {
       title: "Transport",
       url: "/transport",
-      icon: Truck,
+      icon: BusIcon,
       items: [
         { title: "Routes", url: "/transport/routes" },
         { title: "Tracking", url: "/transport/tracking" },
@@ -159,7 +142,7 @@ export default function AppSidebar() {
     {
       title: "Resources",
       url: "/resources",
-      icon: Archive,
+      icon: HardDriveDownload,
       items: [
         { title: "Library", url: "/resources/library" },
         { title: "Inventory", url: "/resources/inventory" },
@@ -192,7 +175,6 @@ export default function AppSidebar() {
   ];
 
   const pathname = usePathname();
-
   return (
     <section>
       <Sidebar collapsible="icon">
@@ -262,7 +244,7 @@ export default function AppSidebar() {
                     <span className="truncate text-xs">Enterprise</span>
                   </div>
                 </Link> */}
-                <Logo className="font-semibold mx-auto" />
+                <Logo className="font-semibold mx-auto" iconSize={16} />
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -279,10 +261,7 @@ export default function AppSidebar() {
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
-                      <SidebarMenuButton
-                        tooltip={item.title}
-                        onClick={}
-                      >
+                      <SidebarMenuButton tooltip={item.title}>
                         {item.icon && <item.icon />}
                         <span>{item.title}</span>
                         <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
