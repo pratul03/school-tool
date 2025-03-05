@@ -19,8 +19,8 @@ export default function ContactUsPage() {
           iconSize={28}
           lineHeight="loose"
         />
-        <h1 className="md:text-4xl font-bold tracking-tight text-3xl mb-4">
-          Manage your Educational Institute in a single Platform
+        <h1 className="max-w-[700px] text-center md:text-4xl font-bold tracking-tight text-3xl mb-4">
+          Get your School Management System
         </h1>
         <p className="text-lg font-medium text-gray-500 max-w-[900px] text-center tracking-normal">
           Streamline your entire school operations with our comprehensive suite
