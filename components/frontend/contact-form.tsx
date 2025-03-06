@@ -17,6 +17,7 @@ import SubmitButton from "../FormInputs/SubmitButton";
 import TextArea from "../FormInputs/TextAreaInput";
 import PhoneInput from "../FormInputs/PhoneInput";
 import CountrySelectInput from "../FormInputs/CountrySelectInput";
+import RoleSelect from "../FormInputs/RoleSelect";
 
 const ContactUs: React.FC = () => {
   type RegisterInputProps = {
@@ -24,7 +25,7 @@ const ContactUs: React.FC = () => {
     email: string;
     password: string;
     phone: string;
-    selected_country: string; // Store only the country name as a string
+    country: string; // Store only the country name as a string
     institute: string;
     url: string;
     students: string;
@@ -39,6 +40,7 @@ const ContactUs: React.FC = () => {
     handleSubmit,
     reset,
     setValue,
+    control,
     formState: { errors },
   } = useForm<RegisterInputProps>();
 
@@ -56,13 +58,13 @@ const ContactUs: React.FC = () => {
     dialCode: string;
   }) => {
     setSelectedCountry(country);
-    setValue("selected_country", country.name); // Update form value
+    setValue("country", country.name); // Update form value
   };
 
   async function onSubmit(data: RegisterInputProps) {
     console.log({
       ...data,
-      selected_country: data.selected_country, // Already a string (country name)
+      country: data.country, // Already a string (country name)
       phone: `${selectedCountry.dialCode}${data.phone}`, // Combine dial code and phone number
     });
 
@@ -103,7 +105,19 @@ const ContactUs: React.FC = () => {
                 To create a more value-added solution, is essential to an
                 analysis of the possibilities of improvement.
               </p>
-              <button className="bg-[#1e1a78] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300 shadow-md">
+              <button className="bg-[#1e1a78] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-indigo-700 transition duration-300 shadow-md">
+                Send a Mail
+              </button>
+            </div>
+            <div className="bg-gradient-to-r from-[#818cf8] via-[#3b82f6] to-[#4f46e5] p-6 rounded-2xl text-black/50">
+              <h3 className="font-semibold mb-2 text-xl">
+                Contact to our team
+              </h3>
+              <p className="text-sm mb-4 py-4">
+                To create a more value-added solution, is essential to an
+                analysis of the possibilities of improvement.
+              </p>
+              <button className="bg-[#1e1a78] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition duration-300 shadow-md">
                 Send a Mail
               </button>
             </div>
@@ -146,6 +160,7 @@ const ContactUs: React.FC = () => {
                   errors={errors}
                   label="Phone Number"
                   name="phone"
+                  placeholder="Eg. 09xx 845x 67"
                   icon={Phone}
                   toolTipText="Enter your phone number with country code"
                   selectedCountry={selectedCountry}
@@ -169,7 +184,7 @@ const ContactUs: React.FC = () => {
                 />
                 <input
                   type="hidden"
-                  {...register("selected_country")}
+                  {...register("country")}
                   value={selectedCountry.name} // Store only the country name
                 />
               </div>
@@ -194,14 +209,13 @@ const ContactUs: React.FC = () => {
                 />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
-                <TextInput
+                <RoleSelect
                   label="Your Role"
-                  register={register}
+                  control={control} // Pass control prop
                   name="role"
-                  type="text"
                   errors={errors}
                   placeholder="Eg. Assistant Secretary"
-                  icon={UserSearchIcon}
+                  toolTipText="Select your role in the institution"
                 />
                 <TextInput
                   label="Product Interest(Which features are you looking for?)"

@@ -14,7 +14,9 @@ export default function Footer() {
               <Logo
                 className="font-semibold"
                 size="lg"
+                weight="bold"
                 variant="secondary"
+                lineHeight="loose"
                 coloredTextColor="text-white"
               />
             </div>

@@ -1,4 +1,5 @@
 import ContactUs from "@/components/frontend/contact-form";
+import Footer from "@/components/frontend/Footer";
 import Logo from "@/components/Logo";
 import { Metadata } from "next";
 import React from "react";
@@ -29,6 +30,9 @@ export default function ContactUsPage() {
         </p>
       </div>
       <ContactUs />
+      <div className="mt-10 -mb-16">
+        <Footer />
+      </div>
     </div>
   );
 }
