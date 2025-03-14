@@ -56,7 +56,6 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 export default function AppSidebar() {
   const user = {
@@ -77,10 +76,10 @@ export default function AppSidebar() {
       url: "/students",
       icon: Users,
       items: [
-        { title: "Student Directory", url: "/students/directory" },
-        { title: "Enrollment", url: "/students/enrollment" },
-        { title: "Attendance", url: "/students/attendance" },
-        { title: "Performance", url: "/students/performance" },
+        { title: "Student Directory", url: "/dashboard/students" },
+        { title: "Fees", url: "/dashboard/students/fees" },
+        { title: "Student Ids", url: "/dashboard/students/ids" },
+        { title: "Attendance", url: "/dashboard/students/attendance" },
       ],
     },
     {
@@ -244,7 +243,7 @@ export default function AppSidebar() {
                     <span className="truncate text-xs">Enterprise</span>
                   </div>
                 </Link> */}
-                <Logo className="font-semibold mx-auto" iconSize={16} />
+                <Logo className="mx-auto" iconSize={16} weight="semibold" />
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
