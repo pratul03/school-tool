@@ -23,7 +23,6 @@ import {
   AudioWaveform,
   BadgeCheck,
   Bell,
-  ChevronsUpDown,
   Command,
   CreditCard,
   GalleryVerticalEnd,
@@ -62,8 +61,8 @@ export default function SidebarHeaderPage() {
   };
 
   return (
-    <div className="flex h-16 items-center gap-4 border-b px-4">
-      <SidebarTrigger />
+    <div className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <SidebarTrigger className="-ml-1" />
       <div className="flex-1">
         <Input
           placeholder="Search products..."
@@ -80,7 +79,6 @@ export default function SidebarHeaderPage() {
         <Plus className="h-5 w-5" />
         <span className="sr-only">Add new</span>
       </Button>
-
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -92,15 +90,8 @@ export default function SidebarHeaderPage() {
                 >
                   <Avatar className="h-8 w-8 rounded-lg">
                     <AvatarImage src={data.user.avatar} alt={data.user.name} />
-                    <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                    <AvatarFallback className="rounded-lg">PM</AvatarFallback>
                   </Avatar>
-                  {/* <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-semibold">
-                      {data.user.name}
-                    </span>
-                    <span className="truncate text-xs">{data.user.email}</span>
-                  </div> */}
-                  {/* <ChevronsUpDown className="ml-auto size-4" /> */}
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
