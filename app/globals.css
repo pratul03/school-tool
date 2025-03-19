@@ -120,3 +120,33 @@ body::-webkit-scrollbar-thumb:hover {
   }
 }
 
+@layer components {
+  /* Custom calendar styles */
+  .calendar-day {
+    @apply h-9 w-9 text-center p-0 relative focus-within:relative rounded-full hover:bg-secondary/80 transition-colors focus:outline-none;
+  }
+
+  .calendar-day-selected {
+    @apply bg-blue-400 text-gray-50 hover:bg-blue-500 hover:text-gray-50;
+  }
+
+  .calendar-day-today {
+    @apply font-medium border border-primary/30 text-foreground;
+  }
+
+  .calendar-day-outside {
+    @apply text-muted-foreground opacity-50;
+  }
+
+  .calendar-day-disabled {
+    @apply text-muted-foreground opacity-30 hover:bg-transparent cursor-not-allowed;
+  }
+  
+  .calendar-month-transition {
+    @apply transition-opacity duration-200 ease-in-out;
+  }
+
+  .calendar-nav-button {
+    @apply rounded-full p-1 inline-flex items-center justify-center hover:bg-secondary/80 transition-colors focus:outline-none;
+  }
+}

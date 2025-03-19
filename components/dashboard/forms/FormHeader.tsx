@@ -1,11 +1,8 @@
 "use client";
 
-import CloseButton from "@/components/FormInputs/CloseButton";
-import SubmitButton from "@/components/FormInputs/SubmitButton";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React from "react";
 
 type FormHeaderProps = {
   title: string;

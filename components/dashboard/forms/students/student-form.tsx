@@ -12,6 +12,7 @@ import ImageInput from "@/components/FormInputs/ImageInput";
 import FormFooter from "../FormFooter";
 import PasswordInput from "@/components/FormInputs/PasswordInput";
 import FormSelectInput from "@/components/FormInputs/FormSelectInput";
+import DateInput from "@/components/FormInputs/DateInput";
 
 export type SelectOptionProps = {
   label: string;
@@ -130,15 +131,22 @@ export default function SingleStudentForm({
         loading={loading}
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 py-8">
-        <div className="sm:col-span-8 col-span-full space-y-3">
+      <div className="grid grid-cols-12 gap-6 py-8">
+        <div className="lg:col-span-12 col-span-full space-y-3">
           <div className="grid gap-6">
-            <div className="grid sm:grid-cols-2 gap-3">
+            <div className="grid md:grid-cols-3 gap-3">
               <TextInput
                 register={register}
                 errors={errors}
-                label="Student Name"
-                name="name"
+                label="Student First Name"
+                name="firstName"
+                type="text"
+              />
+              <TextInput
+                register={register}
+                errors={errors}
+                label="Student Last Name"
+                name="lastName"
                 type="text"
               />
               <TextInput
@@ -150,12 +158,13 @@ export default function SingleStudentForm({
               />
             </div>
             <div className="grid sm:grid-cols-2 gap-3">
-              <TextInput
+              <DateInput
                 register={register}
                 errors={errors}
                 label="Date of Birth"
                 name="dob"
-                type="date"
+                toolTipText="Please enter your date of birth."
+                placeholder="Select a date"
               />
               <PasswordInput
                 register={register}
@@ -201,16 +210,14 @@ export default function SingleStudentForm({
                 name="description"
               />
             </div>
-          </div>
-        </div>
-        <div className="sm:col-span-4 col-span-full">
-          <div className="grid auto-rows-max items-start gap-4">
-            <ImageInput
-              title="Category Image"
-              imageUrl={imageUrl}
-              setImageUrl={setImageUrl}
-              endpoint="categoryImage"
-            />
+            <div className="grid">
+              <ImageInput
+                title="Category Image"
+                imageUrl={imageUrl}
+                setImageUrl={setImageUrl}
+                endpoint="categoryImage"
+              />
+            </div>
           </div>
         </div>
       </div>
