@@ -13,6 +13,9 @@ import FormFooter from "../FormFooter";
 import PasswordInput from "@/components/FormInputs/PasswordInput";
 import FormSelectInput from "@/components/FormInputs/FormSelectInput";
 import DateInput from "@/components/FormInputs/DateInput";
+import PhoneInput from "@/components/FormInputs/PhoneInput";
+import { Phone } from "lucide-react";
+import CountrySelectInput from "@/components/FormInputs/CountrySelectInput";
 
 export type SelectOptionProps = {
   label: string;
@@ -28,6 +31,7 @@ export type StudentProps = {
   email: string;
   password: string;
   imageUrl: string;
+  country: string;
 };
 export default function SingleStudentForm({
   editingId,
@@ -78,11 +82,44 @@ export default function SingleStudentForm({
   ];
 
   const [selectedSections, setSelectedSections] = useState<any>(null);
+  const gender = [
+    {
+      label: "Male",
+      value: "male",
+    },
+    {
+      label: "Female",
+      value: "female",
+    },
+    {
+      label: "Others",
+      value: "others",
+    },
+  ];
+
+  const [selectedGender, setSelectedGender] = useState<any>(null);
+  const defaultCountry = {
+    name: "India",
+    code: "IN",
+    dialCode: "+91",
+  };
+  const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
+
+  // Handler for country change
+  const handleCountryChange = (country: {
+    name: string;
+    code: string;
+    dialCode: string;
+  }) => {
+    setSelectedCountry(country);
+    setValue("country", country.name); // Update form value
+  };
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<StudentProps>({
     defaultValues: {
@@ -90,6 +127,7 @@ export default function SingleStudentForm({
       email: "",
       password: "",
       imageUrl: "",
+      country: "",
     },
   });
   const router = useRouter();
@@ -134,7 +172,7 @@ export default function SingleStudentForm({
       <div className="grid grid-cols-12 gap-6 py-8">
         <div className="lg:col-span-12 col-span-full space-y-3">
           <div className="grid gap-6">
-            <div className="grid md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-left">
               <TextInput
                 register={register}
                 errors={errors}
@@ -157,24 +195,7 @@ export default function SingleStudentForm({
                 type="email"
               />
             </div>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <DateInput
-                register={register}
-                errors={errors}
-                label="Date of Birth"
-                name="dob"
-                toolTipText="Please enter your date of birth."
-                placeholder="Select a date"
-              />
-              <PasswordInput
-                register={register}
-                errors={errors}
-                label="Password"
-                name="password"
-                type="password"
-              />
-            </div>
-            <div className="grid sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-left">
               <FormSelectInput
                 label="Parent"
                 options={parents}
@@ -183,6 +204,25 @@ export default function SingleStudentForm({
                 toolTipText={"Add new Parent"}
                 href={"/dashboard/parents/new"}
               />
+
+              <DateInput
+                register={register}
+                errors={errors}
+                label="Date of Birth"
+                name="dob"
+                toolTipText="Please enter your date of birth."
+                placeholder="Select a date"
+              />
+              <FormSelectInput
+                isSearchable={false}
+                label="Gender"
+                options={gender}
+                option={selectedGender}
+                setOption={setSelectedGender}
+                toolTipText={"Select Gender"}
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
               <FormSelectInput
                 label="Class"
                 options={classes}
@@ -191,8 +231,6 @@ export default function SingleStudentForm({
                 toolTipText={"Add class"}
                 href={"/dashboard/academics/classes/new"}
               />
-            </div>
-            <div className="grid sm:grid-cols-2 gap-3">
               <FormSelectInput
                 label="Section"
                 options={sections}
@@ -202,7 +240,33 @@ export default function SingleStudentForm({
                 href={"/dashboard/academics/sections/new"}
               />
             </div>
-            <div className="grid gap-3">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-left">
+              <PhoneInput
+                register={register}
+                errors={errors}
+                label="Phone Number"
+                name="phone"
+                placeholder="Eg. 09xx 845x 67"
+                icon={Phone}
+                toolTipText="Enter your phone number with country code"
+                selectedCountry={selectedCountry}
+                onCountryChange={handleCountryChange}
+              />
+              <CountrySelectInput
+                label="Country"
+                selectedCountry={selectedCountry}
+                onChange={handleCountryChange}
+              />
+              <PasswordInput
+                register={register}
+                errors={errors}
+                label="Password"
+                name="password"
+                type="password"
+              />
+            </div>
+            <div className="grid gap-3 text-left">
               <TextArea
                 register={register}
                 errors={errors}
@@ -222,7 +286,7 @@ export default function SingleStudentForm({
         </div>
       </div>
       <FormFooter
-        href="/categories"
+        href="/students"
         editingId={editingId}
         loading={loading}
         title="Category"

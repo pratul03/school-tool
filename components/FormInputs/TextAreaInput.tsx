@@ -18,7 +18,7 @@ export default function TextArea({
     <div className="col-span-full">
       <label
         htmlFor={name}
-        className="block text-sm font-medium leading-6 text-gray-600"
+        className="block text-sm font-medium leading-6 text-gray-500"
       >
         {label}
       </label>
