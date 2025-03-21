@@ -222,25 +222,6 @@ export default function SingleStudentForm({
                 toolTipText={"Select Gender"}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
-              <FormSelectInput
-                label="Class"
-                options={classes}
-                option={selectedClass}
-                setOption={setSelectedClass}
-                toolTipText={"Add class"}
-                href={"/dashboard/academics/classes/new"}
-              />
-              <FormSelectInput
-                label="Section"
-                options={sections}
-                option={selectedSections}
-                setOption={setSelectedSections}
-                toolTipText={"Add new Section"}
-                href={"/dashboard/academics/sections/new"}
-              />
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-left">
               <PhoneInput
                 register={register}
@@ -261,11 +242,31 @@ export default function SingleStudentForm({
               <PasswordInput
                 register={register}
                 errors={errors}
-                label="Password"
+                label="Student Password"
                 name="password"
                 type="password"
+                toolTipText="This password is for students"
               />
             </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
+              <FormSelectInput
+                label="Class"
+                options={classes}
+                option={selectedClass}
+                setOption={setSelectedClass}
+                toolTipText={"Add class"}
+                href={"/dashboard/academics/classes/new"}
+              />
+              <FormSelectInput
+                label="Section"
+                options={sections}
+                option={selectedSections}
+                setOption={setSelectedSections}
+                toolTipText={"Add new Section"}
+                href={"/dashboard/academics/sections/new"}
+              />
+            </div>
+
             <div className="grid gap-3 text-left">
               <TextArea
                 register={register}

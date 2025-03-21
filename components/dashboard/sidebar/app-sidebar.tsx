@@ -24,11 +24,8 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarHeader,
-  SidebarInset,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
@@ -48,12 +45,12 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 
 export default function AppSidebar() {
   const user = {
@@ -62,116 +59,134 @@ export default function AppSidebar() {
     avatar: "/avatars/shadcn.jpg",
   };
 
-  const sidebarLinks = [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: LayoutDashboard,
-      items: [{ title: "Overview", url: "/dashboard/overview" }],
-    },
-    {
-      title: "Student Management",
-      url: "/students",
-      icon: Users,
-      items: [
-        { title: "Student Directory", url: "/dashboard/students" },
-        { title: "Fees", url: "/dashboard/students/fees" },
-        { title: "Student Ids", url: "/dashboard/students/ids" },
-        { title: "Attendance", url: "/dashboard/students/attendance" },
-      ],
-    },
-    {
-      title: "Academics",
-      url: "/academics",
-      icon: BookOpen,
-      items: [
-        { title: "Curriculum", url: "/academics/curriculum" },
-        { title: "Timetable", url: "/academics/timetable" },
-        { title: "Examinations", url: "/academics/examinations" },
-        { title: "Assignments", url: "/academics/assignments" },
-        { title: "Report Cards", url: "/academics/report-cards" },
-      ],
-    },
-    {
-      title: "Staff Management",
-      url: "/staff",
-      icon: UserCog,
-      items: [
-        { title: "Staff Directory", url: "/staff/directory" },
-        { title: "Attendance", url: "/staff/attendance" },
-        { title: "Leave Management", url: "/staff/leave" },
-        { title: "Performance", url: "/staff/performance" },
-      ],
-    },
-    {
-      title: "Communication",
-      url: "/communication",
-      icon: MessageSquare,
-      items: [
-        { title: "Messages", url: "/communication/messages" },
-        { title: "Announcements", url: "/communication/announcements" },
-        { title: "Notice Board", url: "/communication/notice-board" },
-        { title: "Emergency Alerts", url: "/communication/emergency" },
-      ],
-    },
-    {
-      title: "Finance",
-      url: "/finance",
-      icon: ReceiptIndianRupee,
-      items: [
-        { title: "Fee Management", url: "/finance/fees" },
-        { title: "Payments", url: "/finance/payments" },
-        { title: "Scholarships", url: "/finance/scholarships" },
-        { title: "Reports", url: "/finance/reports" },
-      ],
-    },
-    {
-      title: "Transport",
-      url: "/transport",
-      icon: BusIcon,
-      items: [
-        { title: "Routes", url: "/transport/routes" },
-        { title: "Tracking", url: "/transport/tracking" },
-        { title: "Drivers", url: "/transport/drivers" },
-        { title: "Maintenance", url: "/transport/maintenance" },
-      ],
-    },
-    {
-      title: "Resources",
-      url: "/resources",
-      icon: HardDriveDownload,
-      items: [
-        { title: "Library", url: "/resources/library" },
-        { title: "Inventory", url: "/resources/inventory" },
-        { title: "Facilities", url: "/resources/facilities" },
-        { title: "Assets", url: "/resources/assets" },
-      ],
-    },
-    {
-      title: "Reports & Analytics",
-      url: "/reports",
-      icon: BarChart,
-      items: [
-        { title: "Academic Reports", url: "/reports/academic" },
-        { title: "Financial Reports", url: "/reports/financial" },
-        { title: "Custom Reports", url: "/reports/custom" },
-        { title: "Analytics Dashboard", url: "/reports/analytics" },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "/settings",
-      icon: Settings,
-      items: [
-        { title: "School Profile", url: "/settings/profile" },
-        { title: "User Management", url: "/settings/users" },
-        { title: "System Settings", url: "/settings/system" },
-        { title: "Backup & Security", url: "/settings/security" },
-      ],
-    },
-  ];
+  const sidebarLinks = useMemo(
+    () => [
+      {
+        title: "Dashboard",
+        url: "/dashboard",
+        icon: LayoutDashboard,
+        items: [{ title: "Overview", url: "/dashboard/overview" }],
+      },
+      {
+        title: "Student Management",
+        url: "/students",
+        icon: Users,
+        items: [
+          { title: "Student Directory", url: "/dashboard/students" },
+          { title: "Fees", url: "/dashboard/students/fees" },
+          { title: "Student Ids", url: "/dashboard/students/ids" },
+          { title: "Attendance", url: "/dashboard/students/attendance" },
+        ],
+      },
+      {
+        title: "Academics",
+        url: "/academics",
+        icon: BookOpen,
+        items: [
+          { title: "Curriculum", url: "/academics/curriculum" },
+          { title: "Timetable", url: "/academics/timetable" },
+          { title: "Examinations", url: "/academics/examinations" },
+          { title: "Assignments", url: "/academics/assignments" },
+          { title: "Report Cards", url: "/academics/report-cards" },
+        ],
+      },
+      {
+        title: "Staff Management",
+        url: "/staff",
+        icon: UserCog,
+        items: [
+          { title: "Staff Directory", url: "/staff/directory" },
+          { title: "Attendance", url: "/staff/attendance" },
+          { title: "Leave Management", url: "/staff/leave" },
+          { title: "Performance", url: "/staff/performance" },
+        ],
+      },
+      {
+        title: "Communication",
+        url: "/communication",
+        icon: MessageSquare,
+        items: [
+          { title: "Messages", url: "/communication/messages" },
+          { title: "Announcements", url: "/communication/announcements" },
+          { title: "Notice Board", url: "/communication/notice-board" },
+          { title: "Emergency Alerts", url: "/communication/emergency" },
+        ],
+      },
+      {
+        title: "Finance",
+        url: "/finance",
+        icon: ReceiptIndianRupee,
+        items: [
+          { title: "Fee Management", url: "/finance/fees" },
+          { title: "Payments", url: "/finance/payments" },
+          { title: "Scholarships", url: "/finance/scholarships" },
+          { title: "Reports", url: "/finance/reports" },
+        ],
+      },
+      {
+        title: "Transport",
+        url: "/transport",
+        icon: BusIcon,
+        items: [
+          { title: "Routes", url: "/transport/routes" },
+          { title: "Tracking", url: "/transport/tracking" },
+          { title: "Drivers", url: "/transport/drivers" },
+          { title: "Maintenance", url: "/transport/maintenance" },
+        ],
+      },
+      {
+        title: "Resources",
+        url: "/resources",
+        icon: HardDriveDownload,
+        items: [
+          { title: "Library", url: "/resources/library" },
+          { title: "Inventory", url: "/resources/inventory" },
+          { title: "Facilities", url: "/resources/facilities" },
+          { title: "Assets", url: "/resources/assets" },
+        ],
+      },
+      {
+        title: "Reports & Analytics",
+        url: "/reports",
+        icon: BarChart,
+        items: [
+          { title: "Academic Reports", url: "/reports/academic" },
+          { title: "Financial Reports", url: "/reports/financial" },
+          { title: "Custom Reports", url: "/reports/custom" },
+          { title: "Analytics Dashboard", url: "/reports/analytics" },
+        ],
+      },
+      {
+        title: "Settings",
+        url: "/settings",
+        icon: Settings,
+        items: [
+          { title: "School Profile", url: "/settings/profile" },
+          { title: "User Management", url: "/settings/users" },
+          { title: "System Settings", url: "/settings/system" },
+          { title: "Backup & Security", url: "/settings/security" },
+        ],
+      },
+    ],
+    [] // Empty dependency array ensures this is only computed once
+  );
 
   const pathname = usePathname();
+  const [openCollapsible, setOpenCollapsible] = useState<string | null>(
+    "/dashboard"
+  );
+
+  useEffect(() => {
+    const matchingLink = sidebarLinks.find((link) =>
+      link.items.some((item) => pathname.startsWith(item.url))
+    );
+    if (matchingLink) {
+      setOpenCollapsible(matchingLink.title);
+    } else {
+      setOpenCollapsible(null);
+    }
+  }, [pathname, sidebarLinks]);
+
   return (
     <section>
       <Sidebar collapsible="icon">
@@ -253,7 +268,10 @@ export default function AppSidebar() {
                 <Collapsible
                   key={item.title}
                   asChild
-                  defaultOpen={pathname.startsWith(item.url)}
+                  open={openCollapsible === item.title}
+                  onOpenChange={(open) =>
+                    setOpenCollapsible(open ? item.title : null)
+                  }
                   className="group/collapsible"
                 >
                   <SidebarMenuItem>
