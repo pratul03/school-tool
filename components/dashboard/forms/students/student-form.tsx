@@ -108,7 +108,10 @@ export default function SingleStudentForm({
     dialCode: "+91",
   };
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
-  const [selectedState, setSelectedState] = useState("");
+  const [selectedState, setSelectedState] = useState<{
+    name: string;
+    isoCode: string;
+  } | null>(null);
   const [selectedCity, setSelectedCity] = useState("");
 
   // Handler for country change
@@ -118,15 +121,16 @@ export default function SingleStudentForm({
     dialCode: string;
   }) => {
     setSelectedCountry(country);
-    setSelectedState(""); // Reset state when country changes
+    setSelectedState(null); // Reset state when country changes
     setSelectedCity(""); // Reset city when country changes
     setValue("country", country.name); // Update form value
   };
   // Handler for state change
-  const handleStateChange = (state: string) => {
-    setSelectedState(state);
+  // Handler for state change
+  const handleStateChange = (state: { name: string; isoCode: string }) => {
+    setSelectedState(state); // Store both name and ISO code
+    setValue("state", state.name); // Update form value with state name
     setSelectedCity(""); // Reset city when state changes
-    setValue("state", state); // Update form value
   };
 
   // Handler for city change
@@ -276,7 +280,7 @@ export default function SingleStudentForm({
               />
               <CitySelect
                 selectedCountryCode={selectedCountry.code}
-                selectedState={selectedState}
+                selectedState={selectedState?.isoCode as string}
                 onCityChange={handleCityChange}
                 label="City"
               />

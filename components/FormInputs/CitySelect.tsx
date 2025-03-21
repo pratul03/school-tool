@@ -9,7 +9,7 @@ import { useDebounce } from "@/hooks/use-debounce"; // Custom debounce hook
 
 type CitySelectProps = {
   selectedCountryCode: string;
-  selectedState: string;
+  selectedState: string; // State ISO code
   onCityChange: (city: string) => void;
   label?: string;
 };
@@ -23,7 +23,7 @@ export default function CitySelect({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState("");
-  const debouncedSearchTerm = useDebounce(searchTerm, 300); // Debounce search term
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   // Memoize the list of cities for the selected state
   const cities = useMemo(() => {

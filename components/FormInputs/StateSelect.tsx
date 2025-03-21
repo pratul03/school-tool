@@ -9,7 +9,7 @@ import { useDebounce } from "@/hooks/use-debounce"; // Custom debounce hook
 
 type StateSelectProps = {
   selectedCountryCode: string;
-  onStateChange: (state: string) => void;
+  onStateChange: (state: { name: string; isoCode: string }) => void; // Pass both name and ISO code
   label?: string;
 };
 
@@ -19,9 +19,12 @@ export default function StateSelect({
   label,
 }: StateSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedState, setSelectedState] = useState<string>("");
+  const [selectedState, setSelectedState] = useState<{
+    name: string;
+    isoCode: string;
+  } | null>(null); // Store both name and ISO code
   const [searchTerm, setSearchTerm] = useState("");
-  const debouncedSearchTerm = useDebounce(searchTerm, 300); // Debounce search term
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   // Memoize the list of states for the selected country
   const states = useMemo(() => {
@@ -38,8 +41,8 @@ export default function StateSelect({
   // Handle state selection
   const handleStateSelect = useCallback(
     (state: { name: string; isoCode: string }) => {
-      setSelectedState(state.isoCode); // Update selected state (ISO code)
-      onStateChange(state.isoCode); // Propagate state change to parent
+      setSelectedState(state); // Update selected state (name and ISO code)
+      onStateChange(state); // Pass both name and ISO code to parent
       setIsOpen(false); // Close the dropdown
       setSearchTerm(""); // Clear the search term
     },
@@ -61,7 +64,7 @@ export default function StateSelect({
       >
         <div className="flex items-center gap-2 overflow-hidden">
           <span className="text-sm font-medium truncate">
-            {selectedState || "Select State"}
+            {selectedState?.name || "Select State"} {/* Display state name */}
           </span>
         </div>
         <motion.div
@@ -99,7 +102,7 @@ export default function StateSelect({
                     type="button"
                     className={cn(
                       "flex items-center w-full px-4 py-2 text-sm hover:bg-gray-50 transition-colors",
-                      selectedState === state.isoCode && "bg-indigo-50"
+                      selectedState?.isoCode === state.isoCode && "bg-indigo-50"
                     )}
                     onClick={() => handleStateSelect(state)}
                     whileHover={{ scale: 1.02 }}
