@@ -81,7 +81,7 @@ export default function CountrySelectInput({
   return (
     <div className="relative w-full" ref={dropdownRef}>
       {label && (
-        <label className="block text-sm font-medium leading-6 text-gray-600 tracking-tight mb-2">
+        <label className="block text-sm font-medium leading-6 text-gray-500 tracking-tight mb-2">
           {label}
         </label>
       )}

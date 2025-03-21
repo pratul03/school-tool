@@ -16,6 +16,8 @@ import DateInput from "@/components/FormInputs/DateInput";
 import PhoneInput from "@/components/FormInputs/PhoneInput";
 import { Phone } from "lucide-react";
 import CountrySelectInput from "@/components/FormInputs/CountrySelectInput";
+import StateSelect from "@/components/FormInputs/StateSelect";
+import CitySelect from "@/components/FormInputs/CitySelect";
 
 export type SelectOptionProps = {
   label: string;
@@ -32,6 +34,8 @@ export type StudentProps = {
   password: string;
   imageUrl: string;
   country: string;
+  state: string;
+  city: string;
 };
 export default function SingleStudentForm({
   editingId,
@@ -104,6 +108,8 @@ export default function SingleStudentForm({
     dialCode: "+91",
   };
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
 
   // Handler for country change
   const handleCountryChange = (country: {
@@ -112,7 +118,21 @@ export default function SingleStudentForm({
     dialCode: string;
   }) => {
     setSelectedCountry(country);
+    setSelectedState(""); // Reset state when country changes
+    setSelectedCity(""); // Reset city when country changes
     setValue("country", country.name); // Update form value
+  };
+  // Handler for state change
+  const handleStateChange = (state: string) => {
+    setSelectedState(state);
+    setSelectedCity(""); // Reset city when state changes
+    setValue("state", state); // Update form value
+  };
+
+  // Handler for city change
+  const handleCityChange = (city: string) => {
+    setSelectedCity(city);
+    setValue("city", city); // Update form value
   };
 
   const {
@@ -246,6 +266,19 @@ export default function SingleStudentForm({
                 name="password"
                 type="password"
                 toolTipText="This password is for students"
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
+              <StateSelect
+                selectedCountryCode={selectedCountry.code}
+                onStateChange={handleStateChange}
+                label="State"
+              />
+              <CitySelect
+                selectedCountryCode={selectedCountry.code}
+                selectedState={selectedState}
+                onCityChange={handleCityChange}
+                label="City"
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
